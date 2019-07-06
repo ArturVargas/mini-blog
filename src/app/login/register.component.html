@@ -1,0 +1,35 @@
+
+
+<div class="text-center">
+    <form class="form-signup" (ngSubmit)="sendForm()" [formGroup]="registerForm">
+  
+      <h1 class="h3 mb-4 text-uppercase font-weight-bolder text-danger">
+          [ Registro para creativos ]
+      </h1>
+      <div class="form-group mb-3">
+        <label for="">Nombre de Usuario</label>
+        <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="userName">
+      </div>
+      <div class="form-group mb-3">
+        <label for="">Correo Electrónico</label>
+        <input type="email" class="form-control" placeholder="Correo Electrónico" formControlName="email">
+      </div>
+      <div class="form-group mb-3">
+        <label for="">Contraseña</label>
+        <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+      </div>
+      <div class="form-group mb-3">
+        <label for="">País</label>
+        <select class="form-control mb-3" formControlName="country">
+            <option value="">Elige un País</option>
+            <option value="MEX">México</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-info btn-block mb-5" type="submit">Registrarme</button>
+        <button class="btn btn-danger shadow" routerLink="/login">Ya Tengo Cuenta</button>
+      </div>
+  
+    </form>
+  </div>
+  
