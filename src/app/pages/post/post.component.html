@@ -1,0 +1,20 @@
+
+<div class="container text-center" [hidden]="!loader">
+  <div class="spinner-grow spin-style" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="container" [hidden]="loader" >
+  <h3>{{content.title}}</h3>
+
+  <div class="my-3">
+    <label>UserName</label>
+    <label>Fecha</label>
+  </div>
+
+  <div>
+    <h1>Body</h1>
+  </div>
+
+</div>

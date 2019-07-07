@@ -14,6 +14,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MarcasComponent } from './pages/marcas/marcas.component';
 import { BlogComponent } from './pages/blog/blog.component';
+import { PostComponent } from './pages/post/post.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { BlogComponent } from './pages/blog/blog.component';
     FooterComponent,
     HomeComponent,
     MarcasComponent,
-    BlogComponent
+    BlogComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

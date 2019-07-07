@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URL_SVC } from '../../config/config';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -9,13 +9,21 @@ import { User } from 'src/app/models/user.model';
 })
 export class AuthService {
   token = '';
+  user: User;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(public http: HttpClient, public router: Router) { }
   
   uploadStorage() {
     this.token = localStorage.getItem('token');
+    this.user = JSON.parse(localStorage.getItem('user'));
     if(this.token === null) {
       this.token = '';
+      this.user = null;
     }
   }
 
@@ -35,7 +43,7 @@ export class AuthService {
 
   newUser(user: User) {
     const url = URL_SVC + 'signup';
-    return this.http.post( url, user)
+    return this.http.post( url, user, this.httpOptions)
       .subscribe( res => {
         console.log(res);
       }, (err) => {
@@ -52,6 +60,14 @@ export class AuthService {
         console.log(err);
       })
   };
+
+  logout() {
+    this.user = null;
+    this.token = '';
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/home']);
+  }
 
   isLogged() {
     this.uploadStorage();
