@@ -15,6 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MarcasComponent } from './pages/marcas/marcas.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { PostComponent } from './pages/post/post.component';
+import { SearcherComponent } from './shared/searcher/searcher.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { PostComponent } from './pages/post/post.component';
     HomeComponent,
     MarcasComponent,
     BlogComponent,
-    PostComponent
+    PostComponent,
+    SearcherComponent
   ],
   imports: [
     BrowserModule,

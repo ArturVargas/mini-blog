@@ -1,18 +1,19 @@
 
-<div class="text-center">
-  <form class="form-signup" (ngSubmit)="sendForm()" [formGroup]="loginForm">
+<div class="text-center cover">
+  <form class="form-signup py-5" (ngSubmit)="sendForm()" [formGroup]="loginForm">
 
-    <h1 class="h3 mb-4">Iniciar Sesión</h1>
+    <h1 class="h3 mt-5 mb-4">Iniciar Sesión</h1>
     <div class="form-group mb-3">
       <label for="">Correo Electrónico</label>
       <input type="email" class="form-control" placeholder="Correo Electrónico" formControlName="email">
+      <span class="text-danger" *ngIf="loginForm.get('email').hasError('email') && !loginForm.get('email').pristine">Debe de ser válido</span>
     </div>
     <div class="form-group mb-3">
       <label for="">Contraseña</label>
       <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
     </div>
     <div class="form-group">
-      <button class="btn btn-info btn-block mb-5" type="submit">Ingresar</button>
+      <button class="btn btn-info btn-block mb-5" type="submit" [disabled]="loginForm.invalid">Ingresar</button>
       <button class="btn btn-danger shadow" routerLink="/register">Regístrarme</button>
     </div>
 

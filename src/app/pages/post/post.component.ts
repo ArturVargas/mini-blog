@@ -8,26 +8,25 @@ import { BlogService } from 'src/app/services/blog/blog.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  content;
-  params;
+  content = [];
   loader = true;
   constructor(private actvdRoute: ActivatedRoute, private blogSvc: BlogService) { 
     this.actvdRoute.params.subscribe( params => {
-       this.params = params;
+       this.getPost(params.id);
     }, (err) => {
         console.log(err);
     })
   }
 
   ngOnInit() {
-    this.getPost();
+    
   }
 
-  getPost() {
-    this.blogSvc.getPost(this.params.id)
+  getPost(id) {
+    this.blogSvc.getPost(id)
     .subscribe( data => {
       this.loader = true;
-      this.content = data;
+      this.content.push(data);
       console.log(data);
       this.loader = false;
     }, (err) => {

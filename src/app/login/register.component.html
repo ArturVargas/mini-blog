@@ -1,32 +1,38 @@
 
 
-<div class="text-center">
-    <form class="form-signup" (ngSubmit)="sendForm()" [formGroup]="registerForm">
+<div class="text-center cover">
+    <form class="form-signup py-5" (ngSubmit)="sendForm()" [formGroup]="registerForm">
   
-      <h1 class="h3 mb-4 text-uppercase font-weight-bolder text-danger">
+      <h1 class="h3 mt-5 mb-4 text-uppercase font-weight-bolder text-danger">
           [ Registro para creativos ]
       </h1>
       <div class="form-group mb-3">
         <label for="">Nombre de Usuario</label>
         <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="userName">
+        <span class="text-danger" *ngIf="registerForm.get('userName').hasError('required') && !registerForm.get('userName').pristine">Campo Obligatorio</span>
       </div>
       <div class="form-group mb-3">
         <label for="">Correo Electrónico</label>
         <input type="email" class="form-control" placeholder="Correo Electrónico" formControlName="email">
+        <span class="text-danger" *ngIf="registerForm.get('email').hasError('required') && !registerForm.get('email').pristine">Campo Obligatorio</span>
+        <span class="text-danger" *ngIf="registerForm.get('email').hasError('email') && !registerForm.get('email').pristine">Debe de ser válido</span>
       </div>
       <div class="form-group mb-3">
         <label for="">Contraseña</label>
         <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+        <span class="text-danger" *ngIf="registerForm.get('password').hasError('required') && !registerForm.get('password').pristine">Campo Obligatorio</span>
+        <span class="text-danger" *ngIf="registerForm.get('password').errors?.minlength && !registerForm.get('password').pristine">Al menos 6 caracteres</span>
       </div>
       <div class="form-group mb-3">
         <label for="">País</label>
         <select class="form-control mb-3" formControlName="country">
             <option value="">Elige un País</option>
-            <option value="MEX">México</option>
+            <option *ngFor="let country of countries" [value]="country">{{country}}</option>
         </select>
+        <span class="text-danger" *ngIf="registerForm.get('country').hasError('required') && !registerForm.get('country').pristine">Campo Obligatorio</span>
       </div>
       <div class="form-group">
-        <button class="btn btn-info btn-block mb-5" type="submit">Registrarme</button>
+        <button class="btn btn-info btn-block mb-5" type="submit" [disabled]="registerForm.invalid">Registrarme</button>
         <button class="btn btn-danger shadow" routerLink="/login">Ya Tengo Cuenta</button>
       </div>
   

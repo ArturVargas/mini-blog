@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from 'src/app/services/blog/blog.service';
+import { AuthService } from '../../services/auth/auth.service';
+import { BlogService } from '../../services/blog/blog.service';
 import { Router } from '@angular/router';
 
 
@@ -12,7 +13,9 @@ export class BlogComponent implements OnInit {
   
   posts;
 
-  constructor(private blogSvc: BlogService, private router: Router) { }
+  constructor(private auth: AuthService, private blogSvc: BlogService, private router: Router) {
+    this.auth.getUserInfo();
+   }
 
   ngOnInit() {
     this.blogSvc.getAllPosts()

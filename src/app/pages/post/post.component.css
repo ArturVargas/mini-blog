@@ -1,7 +1,20 @@
 
+.cambas-header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 20rem;
+    padding: 15rem 0;
+    background: url("https://www.cambas.com/wp-content/uploads/2019/03/cafe-chairs-coffee-shop-887723-1024x683.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    /* background-size: cover; */
+}
+
 .spin-style {
     width: 5rem; 
     height: 5rem;
-    color: aliceblue;
+    color: rgb(164, 21, 21);
     text-align: center;
 }

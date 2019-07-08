@@ -1,0 +1,16 @@
+
+.footer-section {
+    padding: 5rem 0 0;
+    background-color: #012d40;
+}
+
+.footer-section .card {
+    border: 0;
+    
+}
+
+.footer-section .card hr {
+    border-color: #012d40;
+    border-width: 0.25rem;
+    width: 3rem; 
+}

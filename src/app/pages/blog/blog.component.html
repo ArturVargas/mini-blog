@@ -1,18 +1,24 @@
+<div class="cover">
 
-<div class="container">
+  <div class="container py-5">
+      <div class="pb-2">
+        <app-searcher></app-searcher>
+      </div>
 
-  <div class="row">
-    <div class="col-sm-6 my-3" *ngFor="let post of posts">
-      <div class="card bg-dark text-white">
-        <img src="https://www.cambas.com/wp-content/uploads/2019/03/cafe-chairs-coffee-shop-887723-1024x683.jpg" class="card-img" alt="...">
-        <div class="card-img-overlay">
-          <h5 class="card-title text-center">{{post.title}}</h5>
+    <div class="row my-5">
+      <div class="col-sm-6 my-3" *ngFor="let post of posts">
+        <div class="card bg-dark text-white">
+          <img src="https://www.cambas.com/wp-content/uploads/2019/03/cafe-chairs-coffee-shop-887723-1024x683.jpg"
+            class="card-img" alt="...">
+          <div class="card-img-overlay">
+            <h5 class="card-title text-center">{{post.title}}</h5>
             <p class="card-text text-center">By {{post.userHandle}}</p>
             <p class="card-text text-right"> {{post.createdAt | date }} </p>
             <a (click)="readPost(post.postId)" class="btn btn-danger btn-block">Ver más...</a>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
-  
 </div>

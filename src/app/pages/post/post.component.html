@@ -5,16 +5,50 @@
   </div>
 </div>
 
-<div class="container" [hidden]="loader" >
-  <h3>{{content.title}}</h3>
 
-  <div class="my-3">
-    <label>UserName</label>
-    <label>Fecha</label>
+<header class="cambas-header" [hidden]="loader">
+</header>
+
+
+<div *ngFor="let item of content" class="container align-items-center">
+  <div class="mx-auto text-center">
+    <h2 class="mx-auto my-0 text-uppercase text-center">{{item.title}}</h2>
   </div>
 
-  <div>
-    <h1>Body</h1>
+  <div class="my-3">
+    <p class="lead">{{item.userHandle}}</p>
+    <hr>
+    <p>{{item.createdAt | date }} {{item.location}}</p>
+  </div>
+
+  <div class="container row mt-2">
+    <div class="text-container text-justify">
+      {{item.body}}
+    </div>
+  </div>
+
+  <!-- Comments Form -->
+  <div class="card my-4">
+    <h5 class="card-header">Deja un Commentario:</h5>
+    <div class="card-body">
+      <form >
+        <div class="form-group">
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-danger" type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="media my-4" *ngFor="let comment of item.comments">
+    <img class="d-flex mr-3 rounded-circle" src="assets/img/blank-profile.png" width="50" height="50" alt="">
+    <div class="media-body">  
+      <h5 class="mt-0">{{comment.userHandle}}</h5>
+       {{comment.body}}
+      <p class="text-right">{{comment.createdAt | date }}</p>
+    </div>
   </div>
 
 </div>

@@ -1,0 +1,14 @@
+
+.cambas-header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35rem;
+    padding: 15rem 0;
+    background: url("https://www.cambas.com/wp-content/uploads/2018/09/I3.png?id=46098");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+

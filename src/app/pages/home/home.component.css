@@ -1,6 +1,19 @@
 
-.cerebro {
+.cambas-header {
+    position: relative;
     width: 100%;
     height: auto;
-    background-image: url(https://www.cambas.com/wp-content/uploads/2018/05/Cerebro.jpg?id=38525) !important;
+    min-height: 35rem;
+    padding: 15rem 0;
+    background: url("https://www.cambas.com/wp-content/uploads/2018/05/Cerebro.jpg?id=38525");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.about-section h4 {
+    font-size: 22px;
+    line-height: 3rem;
+    letter-spacing: 5px;
 }

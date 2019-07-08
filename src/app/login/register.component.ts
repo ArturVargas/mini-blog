@@ -12,11 +12,14 @@ import { User } from '../models/user.model';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  constructor(private auth: AuthService) { }
+  countries = [];
+  constructor(private auth: AuthService) { 
+    this.getCountries();
+  }
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      userName: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      userName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       country: new FormControl('', [Validators.required])
@@ -29,9 +32,16 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.email,
       this.registerForm.value.password,
       this.registerForm.value.userName,
-      this.registerForm.value.component
+      this.registerForm.value.country
     );
     this.auth.newUser(user);
+  }
+
+  getCountries() {
+    this.auth.getAllCountries()
+     .subscribe((countryArray: any) => {
+       this.countries = this.auth.countriesList;
+     })
   }
 
 }
