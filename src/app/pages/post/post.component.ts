@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog/blog.service';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-post',
@@ -10,16 +12,28 @@ import { BlogService } from 'src/app/services/blog/blog.service';
 export class PostComponent implements OnInit {
   content = [];
   loader = true;
-  constructor(private actvdRoute: ActivatedRoute, private blogSvc: BlogService) { 
+  postId;
+  commentsForm: FormGroup;
+  constructor(private actvdRoute: ActivatedRoute, private blogSvc: BlogService,
+              private router: Router) { 
     this.actvdRoute.params.subscribe( params => {
+      this.postId = params.id;
        this.getPost(params.id);
     }, (err) => {
-        console.log(err);
+      Swal.fire({
+        type: 'error',
+        title: 'Error!',
+        text: err.error.error,
+        showConfirmButton: false,
+        timer: 2000  
+      });
     })
   }
 
   ngOnInit() {
-    
+    this.commentsForm = new FormGroup({
+      body: new FormControl('', [Validators.required, Validators.minLength(5)])
+    })
   }
 
   getPost(id) {
@@ -30,7 +44,20 @@ export class PostComponent implements OnInit {
       console.log(data);
       this.loader = false;
     }, (err) => {
-      console.log(err);
+      Swal.fire({
+        type: 'error',
+        title: 'Error!',
+        text: err.error.error,
+        showConfirmButton: false,
+        timer: 2000  
+      });
+      this.router.navigate(['/blog']);
     })
+  }
+
+  sendComment() {
+    if(this.commentsForm.invalid){return;}
+    this.blogSvc.newComment(this.commentsForm.value, this.postId);
+    this.commentsForm.reset()
   }
 }
