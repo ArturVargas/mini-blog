@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 export class BlogComponent implements OnInit {
   
   posts;
-
+  loader = true;
+  
   constructor(private auth: AuthService, private blogSvc: BlogService, private router: Router) {
     this.auth.getUserInfo();
    }
@@ -20,8 +21,10 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
     this.blogSvc.getAllPosts()
       .subscribe(data => {
+        this.loader = true;
         this.posts = data;
         console.log(this.posts);
+        this.loader = false;
       }, (err) => {
         console.log(err);
       })

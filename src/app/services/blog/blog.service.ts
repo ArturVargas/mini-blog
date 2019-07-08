@@ -40,7 +40,7 @@ export class BlogService {
           showConfirmButton: false,
           timer: 2000 
         });
-        this.router.navigate(['/post', postId]);
+        location.reload();
       }, (err) => {
         Swal.fire({
           type: 'error',
@@ -50,5 +50,6 @@ export class BlogService {
         })
       })
   }
+
 
 }
