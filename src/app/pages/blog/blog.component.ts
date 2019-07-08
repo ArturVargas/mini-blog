@@ -23,7 +23,6 @@ export class BlogComponent implements OnInit {
       .subscribe(data => {
         this.loader = true;
         this.posts = data;
-        console.log(this.posts);
         this.loader = false;
       }, (err) => {
         console.log(err);
