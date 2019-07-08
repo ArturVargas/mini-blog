@@ -13,7 +13,7 @@ export class BlogComponent implements OnInit {
   
   posts;
   loader = true;
-  
+  p = 1;
   constructor(private auth: AuthService, private blogSvc: BlogService, private router: Router) {
     this.auth.getUserInfo();
    }
