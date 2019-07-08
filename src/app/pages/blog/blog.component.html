@@ -23,7 +23,17 @@
           </div>
         </div>
       </div>
-      <pagination-controls (pageChange)= "p = $event"></pagination-controls>
+      <div class="row">
+        <div class="col-12">
+          <pagination-controls (pageChange)= "p = $event" class="pagination"
+          autoHide="true"
+          responsive="true"
+          previousLabel="Anterior"
+          nextLabel="Siguiente">
+
+          </pagination-controls>
+        </div>
+      </div>
     </div>
 
   </div>
