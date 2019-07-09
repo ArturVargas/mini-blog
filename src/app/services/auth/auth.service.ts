@@ -92,6 +92,7 @@ export class AuthService {
           showConfirmButton: false,
           timer: 2000  
         });
+        this.logout();
       })
   };
 

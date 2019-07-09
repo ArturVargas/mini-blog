@@ -1,14 +1,30 @@
 <div class="cover">
-    <div class="container text-center" [hidden]="!loader">
-        <div class="spinner-grow spin-style" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
+  <div class="container text-center" [hidden]="!loader">
+    <div class="spinner-grow spin-style" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
   <div class="container py-5" [hidden]="loader">
-      <!-- <div class="pb-2">
-        <app-searcher></app-searcher>
-      </div> -->
+    <div class="pb-2">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Buscar Usuario" (keyup)="searchByUser($event)">
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group">
+              <select name="" id="" class="form-control" (change)="searchByCountry($event)">
+                <option value="">Todos</option>
+                <option [value]="country" *ngFor="let country of countries">{{country}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row my-5">
       <div class="col-sm-6 my-3" *ngFor="let post of posts | paginate: { itemsPerPage: 10, currentPage: p}">
@@ -25,11 +41,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <pagination-controls (pageChange)= "p = $event" class="pagination"
-          autoHide="true"
-          responsive="true"
-          previousLabel="Anterior"
-          nextLabel="Siguiente">
+          <pagination-controls (pageChange)="p = $event" class="pagination" autoHide="true" responsive="true"
+            previousLabel="Anterior" nextLabel="Siguiente">
 
           </pagination-controls>
         </div>
